@@ -39,7 +39,8 @@ def send_box_post_request(weight):
     payload = {
         'OrderUniqueId': deck_state.data['OrderUniqueID'],
         'BoxUniqueID': box_id,
-        'Weight': weight
+        'Weight': weight,
+        'UserID': deck_state.data['userID']
     }
     
     # Send the POST request

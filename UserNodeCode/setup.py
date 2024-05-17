@@ -1,3 +1,4 @@
+import time
 from SingletonDeckState import SingletonDeckState
 from pre_image_processing import image_setup, calculator_images_setup
 from page_setup import setup_idle_screen
@@ -29,6 +30,7 @@ def setup():
     
     try:
         while True:
+            time.sleep(0.05)
             pass
     except KeyboardInterrupt:
         # Close the StreamDeck device when the program is interrupted

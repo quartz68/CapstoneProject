@@ -1,11 +1,12 @@
 import requests
-from demo2 import setup
+from setup import setup
 from page_handler import idle_screen, unidle_screen
 from page_setup import page_setup
 import flask 
 from flask import request, jsonify
 import threading
 import socket
+import cv2
 from SingletonDeckState import SingletonDeckState
 
 # Create Flask app instance
@@ -34,15 +35,29 @@ def send_print_doc():
 
 # Function to send user IP address
 def send_user_ip():
+    # Scan the user ID
+    userID = ""
+    cap = cv2.VideoCapture(0) 
+    detector = cv2.QRCodeDetector()
+    while True: 
+        _, img = cap.read()
+        
+        data, bbox, _ = detector.detectAndDecode(img) 
+        if data: 
+            userID=data 
+            break
     # Set the user ID and IP address
-    userID = "123"
-    info = {'userID': userID, 'ip': "10.32.27.21"}
+    # userID = "1669217383057x956943083712790800"
+    # userID = "123"
+    hostname = socket.gethostname()
+    IP = socket.gethostbyname(hostname)
+    info = {'userID': userID, 'ip': 'http://' + IP + ':5005'}
     # Send the user IP address to the server
-    requests.post('http://shipitdone.ngrok.app/user_signup', json=info)
+    requests.post('http://alert-wired-bass.ngrok-free.app/user_signup', json=info)
 
 # Define a route to receive update data
 @app.route('/update', methods=['POST'])
-def demo():
+def update():
     # Get the update data from the request
     data = request.get_json(force=True)
 

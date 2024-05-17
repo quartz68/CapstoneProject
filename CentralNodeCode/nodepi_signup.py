@@ -4,7 +4,7 @@ import flask
 from flask import request, jsonify
 import json
 
-listener = ngrok.forward(8080,authtoken = '2eVi28Pi3ZLf6747w11xhsZ3Lbe_2B4eYebM2BKrm9uvdFbT', domain = "shipitdone.ngrok.app")
+listener = ngrok.forward(8080,authtoken = '2gTflGCknj9AEXzFqGJwWgoJ0Sq_znXHm95VbosenNQt4H36', domain = "alert-wired-bass.ngrok-free.app")
 
 laptop_ips = {}
 
