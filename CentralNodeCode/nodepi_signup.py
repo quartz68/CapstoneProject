@@ -1,8 +1,6 @@
 import requests
-import ngrok
 import flask 
-from flask import request, jsonify
-import json
+from flask import request
 
 laptop_ips = {}
 
