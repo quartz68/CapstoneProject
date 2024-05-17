@@ -15,6 +15,11 @@ app = flask.Flask(__name__)
 # Create a SingletonDeckState instance
 deck_state = SingletonDeckState()
 
+def get_ip_address():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    return s.getsockname()[0]
+
 # Define a route to receive laptop IP address
 @app.route('/laptop_ip', methods=['POST'])
 def get_laptop_ip():
@@ -54,8 +59,7 @@ def send_user_ip():
     # Set the user ID and IP address
     # userID = "1669217383057x956943083712790800"
     # userID = "123"
-    hostname = socket.gethostname()
-    IP = socket.gethostbyname(hostname)
+    IP = get_ip_address()
     info = {'userID': userID, 'ip': 'http://' + IP + ':5005'}
     # Send the user IP address to the server
     requests.post('https://tools.shipitdone.com/hub/user_signup', json=info)
