@@ -1,5 +1,5 @@
 from SingletonDeckState import SingletonDeckState
-from page_handler import logout_user_ip, next_page, prev_page, page_box_update, page_shipping_update, display_box_row, display_shipping_row, display_doc_row, page_doc_update, send_user_ip, show_calc_page, hide_calc_page
+from page_handler import idle_screen, logout_user_ip, next_page, prev_page, page_box_update, page_shipping_update, display_box_row, display_shipping_row, display_doc_row, page_doc_update, send_user_ip, show_calc_page, hide_calc_page
 import time, threading
 from pre_image_processing import format_image, create_text_overlay
 import requests
