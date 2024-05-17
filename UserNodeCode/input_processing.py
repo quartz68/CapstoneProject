@@ -25,7 +25,7 @@ def key_change_callback(deck, key, state):
             return
         else:
             key_helper(key)
-    if state and not deck_state.process_input:
+    if state and deck_state.idle and not deck_state.process_input:
         if key == 0:
             logout_user_ip()
             send_user_ip()

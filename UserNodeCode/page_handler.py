@@ -15,6 +15,7 @@ def idle_screen():
     '''
     deck_state.process_input = False
     deck_state.docs_ready = False
+    deck_state.idle = True
     display_page(True)
     
 # Define a function to unidle the display of the StreamDeck
@@ -26,6 +27,7 @@ def unidle_screen():
     deck_state.current_box_row = 0
     deck_state.current_shipping_row = 0
     deck_state.process_input = True
+    deck_state.idle = False
 
 # Define a function to display the calculator page on the StreamDeck
 def show_calc_page():

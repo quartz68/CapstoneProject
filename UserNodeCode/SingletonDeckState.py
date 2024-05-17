@@ -23,6 +23,7 @@ class SingletonDeckState:
         instance.pages = []
         instance.red_pages = []
         instance.idle_pages = [None for i in range(15)]
+        instance.idle = True
         instance.picklist_row = []
         instance.red_picklist_row = []
         instance.shipping_row = []
