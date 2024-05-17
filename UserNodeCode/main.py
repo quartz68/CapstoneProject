@@ -54,7 +54,7 @@ def send_user_ip():
         
         data, bbox, _ = detector.detectAndDecode(img) 
 
-        if cv2.waitKey(50) & 0xFF == ord("q"):
+        if cv2.waitKey(100) & 0xFF == ord("q"):
             idle_screen()
             break
         if data: 
