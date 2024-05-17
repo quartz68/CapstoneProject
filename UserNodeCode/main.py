@@ -58,7 +58,7 @@ def send_user_ip():
     IP = socket.gethostbyname(hostname)
     info = {'userID': userID, 'ip': 'http://' + IP + ':5005'}
     # Send the user IP address to the server
-    requests.post('http://alert-wired-bass.ngrok-free.app/user_signup', json=info)
+    requests.post('https://tools.shipitdone.com/hub/user_signup', json=info)
 
 # Define a route to receive update data
 @app.route('/update', methods=['POST'])

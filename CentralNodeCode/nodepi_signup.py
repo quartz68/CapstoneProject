@@ -4,8 +4,6 @@ import flask
 from flask import request, jsonify
 import json
 
-listener = ngrok.forward(8080,authtoken = '2gTflGCknj9AEXzFqGJwWgoJ0Sq_znXHm95VbosenNQt4H36', domain = "alert-wired-bass.ngrok-free.app")
-
 laptop_ips = {}
 
 user_ips = {}
@@ -20,10 +18,10 @@ def get_data():
 def pi_signup():
     data = request.json
     userID = str(data["userID"])
-    user_ip = "10.32.27.21"
+    user_ip = str(data["ip"])
     user_ips[userID] = user_ip
     if userID in laptop_ips.keys():
-        requests.post("http://" + user_ip + ":5005/laptop_ip", json={"ip": laptop_ips[userID] })
+        requests.post(user_ip + "/laptop_ip", json={"ip": laptop_ips[userID] })
     
     print("User: ", userID, user_ip)
 
@@ -39,7 +37,7 @@ def laptop_signup():
     print("laptop_ip", laptop_ip)
 
     if userID in user_ips.keys():
-        requests.post("http://" + user_ips[userID] + ":5005/laptop_ip", json={"ip": laptop_ip })
+        requests.post(user_ips[userID] + "/laptop_ip", json={"ip": laptop_ip })
     
     laptop_ips[userID] = laptop_ip
     # print(data)
@@ -54,7 +52,7 @@ def router():
 
     if userID in user_ips.keys():
         ip = user_ips[userID]
-        requests.post("http://10.32.27.21:5005/update", json=data)
+        requests.post(ip+"/update", json=data)
         print("sent data")
     
     return {"status": "success"}
