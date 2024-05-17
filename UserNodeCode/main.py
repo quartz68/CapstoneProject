@@ -1,6 +1,6 @@
 import requests
 from setup import setup
-from page_handler import display_img, idle_screen, unidle_screen
+from page_handler import display_img, hide_calc_page, idle_screen, unidle_screen
 from page_setup import page_setup
 import flask 
 from flask import request, jsonify
@@ -108,6 +108,8 @@ def update():
 
     elif data["status"] == "closed":
         # Idle the screen
+        if deck_state.current_page == -1:
+            hide_calc_page()
         idle_screen()   
 
     return jsonify({"status": "success"})
