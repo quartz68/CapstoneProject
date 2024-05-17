@@ -27,6 +27,17 @@ def pi_signup():
 
     return {"status": "success"}
 
+@app.route('/user_logout' ,methods = ['POST'])
+def pi_logout():
+    data = request.json
+    user_ip = str(data["ip"])
+
+    ids_to_remove = [key for key, value in user_ips.items() if value == user_ip]
+    for key in ids_to_remove:
+        del user_ips[key]
+
+    return {"status": "success"}
+
 @app.route('/laptop_signup', methods = ['POST'])
 def laptop_signup():
     data = request.json

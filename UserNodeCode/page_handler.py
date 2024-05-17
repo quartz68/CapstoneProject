@@ -1,5 +1,9 @@
+import socket
+import cv2
+from PIL import Image
+import requests
 from SingletonDeckState import SingletonDeckState   
-from pre_image_processing import black_square
+from pre_image_processing import black_square, create_full_deck_sized_image, crop_key_image_from_deck_sized_image
 
 # Create an instance of SingletonDeckState
 deck_state = SingletonDeckState()
@@ -195,3 +199,72 @@ def display_doc_row(key):
     elif key == 13:
         for i in range(3):
             deck_state.deck.set_key_image(i+10, deck_state.pages[deck_state.current_page][i+10])
+
+
+def display_img(img):
+    '''
+    Function to display an image on the StreamDeck.
+    '''
+    key_spacing = (24, 24)
+
+    # Load and resize a source image so that it will fill the given
+    # StreamDeck.
+    image = create_full_deck_sized_image(deck_state.deck, key_spacing, img)
+
+    # print("Created full deck image size of {}x{} pixels.".format(image.width, image.height))
+
+    # Extract out the section of the image that is occupied by each key.
+    key_images = dict()
+    for k in range(deck_state.deck.key_count()):
+        key_images[k] = crop_key_image_from_deck_sized_image(deck_state.deck, image, key_spacing, k)
+
+    # Use a scoped-with on the deck to ensure we're the only thread
+    # using it right now.
+    with deck_state.deck:
+        # Draw the individual key images to each of the keys.
+        for k in range(deck_state.deck.key_count()):
+            key_image = key_images[k]
+
+            # Show the section of the main image onto the key.
+            deck_state.deck.set_key_image(k, key_image)
+
+def get_ip_address():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    return s.getsockname()[0]
+
+# Function to send user IP address
+def send_user_ip():
+    # Scan the user ID
+    userID = ""
+    cap = cv2.VideoCapture(0) 
+    detector = cv2.QRCodeDetector()
+    while True: 
+        _, img = cap.read()
+
+        img_cvt = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img_pil = Image.fromarray(img_cvt)
+        display_img(img_pil)
+        
+        data, bbox, _ = detector.detectAndDecode(img) 
+
+        if cv2.waitKey(1) & 0xFF == ord("q"):
+            idle_screen()
+            break
+        if data: 
+            userID=data 
+            idle_screen()
+            break
+    # Set the user ID and IP address
+    # userID = "1669217383057x956943083712790800"
+    # userID = "123"
+    IP = get_ip_address()
+    info = {'userID': userID, 'ip': 'http://' + IP + ':5005'}
+    # Send the user IP address to the server
+    requests.post('https://tools.shipitdone.com/hub/user_signup', json=info)
+
+def logout_user_ip():
+    IP = get_ip_address()
+    info = {'ip': 'http://' + IP + ':5005'}
+    # Send the user IP address to the server
+    requests.post('https://tools.shipitdone.com/hub/user_logout', json=info)

@@ -1,12 +1,13 @@
 import requests
 from setup import setup
-from page_handler import idle_screen, unidle_screen
+from page_handler import display_img, idle_screen, unidle_screen
 from page_setup import page_setup
 import flask 
 from flask import request, jsonify
 import threading
 import socket
 import cv2
+from PIL import Image
 from SingletonDeckState import SingletonDeckState
 
 # Create Flask app instance
@@ -47,14 +48,18 @@ def send_user_ip():
     while True: 
         _, img = cap.read()
 
-        cv2.imshow("Scan", img)
+        img_cvt = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img_pil = Image.fromarray(img_cvt)
+        display_img(img_pil)
         
         data, bbox, _ = detector.detectAndDecode(img) 
 
         if cv2.waitKey(1) & 0xFF == ord("q"):
+            idle_screen()
             break
         if data: 
             userID=data 
+            idle_screen()
             break
     # Set the user ID and IP address
     # userID = "1669217383057x956943083712790800"
@@ -63,6 +68,12 @@ def send_user_ip():
     info = {'userID': userID, 'ip': 'http://' + IP + ':5005'}
     # Send the user IP address to the server
     requests.post('https://tools.shipitdone.com/hub/user_signup', json=info)
+
+def logout_user_ip():
+    IP = get_ip_address()
+    info = {'ip': 'http://' + IP + ':5005'}
+    # Send the user IP address to the server
+    requests.post('https://tools.shipitdone.com/hub/user_logout', json=info)
 
 # Define a route to receive update data
 @app.route('/update', methods=['POST'])
