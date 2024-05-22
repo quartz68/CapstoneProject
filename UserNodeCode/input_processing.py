@@ -52,8 +52,6 @@ def send_box_post_request(weight):
 
     deck_state.label_ready = True
 
-    idle_screen()
-
     return response.json()
 
 def update_calc_display():
