@@ -161,7 +161,7 @@ def calculate_text_position(draw, image, lines, font, y_offset=0):
         text_width, text_height = textsize(line, font=font)  # Calculate the size of each line of text
         text_x = (image.width - text_width) / 2  # Calculate the x position for each line of text
         positions.append((text_x, text_y))  # Add the position to the list
-        text_y += text_height + 5  # Move to the next line position with some spacing
+        text_y += text_height + y_offset  # Move to the next line position with some spacing
 
     return positions
 
