@@ -58,7 +58,7 @@ def update_calc_display():
     '''
     Function to update the calculator display on the StreamDeck.
     '''
-    cur_number_image = format_image(create_text_overlay('./images/black_square.png', deck_state.calc_input + " lbs", font_path='OpenSans-ExtraBold.ttf', font_color='#ffffff', font_y_offset=6, font_size=24))
+    cur_number_image = format_image(create_text_overlay('./images/black_square.png', deck_state.calc_input + " lbs", font_path='IBMPlexMono-Medium.ttf', font_color='#ffffff', font_y_offset=6, font_size=24))
     deck_state.deck.set_key_image(4, cur_number_image)
 
 def flash_button(key):
