@@ -32,22 +32,22 @@ def calculator_images_setup():
     '''
     for i in range(3):
         # Create and format the calculator pages and red calculator pages
-        deck_state.calc_pages[i] = format_image(create_text_overlay('./images/black_square.png', str(i + 1), font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=6, font_size=28))
-        deck_state.calc_red_pages[i] = format_image(apply_red_hue(create_text_overlay('./images/black_square.png', str(i + 1), font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=6, font_size=28)))
+        deck_state.calc_pages[i] = format_image(create_text_overlay('./images/black_square.png', str(i + 1), font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=3, font_size=28))
+        deck_state.calc_red_pages[i] = format_image(apply_red_hue(create_text_overlay('./images/black_square.png', str(i + 1), font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=3, font_size=28)))
 
-        deck_state.calc_pages[i + 5] = format_image(create_text_overlay('./images/black_square.png', str(i + 4), font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=6, font_size=28))
-        deck_state.calc_red_pages[i + 5] = format_image(apply_red_hue(create_text_overlay('./images/black_square.png', str(i + 4), font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=6, font_size=28)))
+        deck_state.calc_pages[i + 5] = format_image(create_text_overlay('./images/black_square.png', str(i + 4), font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=3, font_size=28))
+        deck_state.calc_red_pages[i + 5] = format_image(apply_red_hue(create_text_overlay('./images/black_square.png', str(i + 4), font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=3, font_size=28)))
 
-        deck_state.calc_pages[i + 10] = format_image(create_text_overlay('./images/black_square.png', str(i + 7), font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=6, font_size=28))
-        deck_state.calc_red_pages[i + 10] = format_image(apply_red_hue(create_text_overlay('./images/black_square.png', str(i + 7), font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=6, font_size=28)))
+        deck_state.calc_pages[i + 10] = format_image(create_text_overlay('./images/black_square.png', str(i + 7), font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=3, font_size=28))
+        deck_state.calc_red_pages[i + 10] = format_image(apply_red_hue(create_text_overlay('./images/black_square.png', str(i + 7), font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=3, font_size=28)))
 
     # Create and format the calculator page for 0
-    deck_state.calc_pages[13] = format_image(create_text_overlay('./images/black_square.png', "0", font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=6, font_size=28))
-    deck_state.calc_red_pages[13] = format_image(apply_red_hue(create_text_overlay('./images/black_square.png', "0", font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=6, font_size=28)))
+    deck_state.calc_pages[13] = format_image(create_text_overlay('./images/black_square.png', "0", font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=3, font_size=28))
+    deck_state.calc_red_pages[13] = format_image(apply_red_hue(create_text_overlay('./images/black_square.png', "0", font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=3, font_size=28)))
 
     # Create and format the calculator page for the decimal point
-    deck_state.calc_pages[8] = format_image(create_text_overlay('./images/black_square.png', ".", font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=6, font_size=28))
-    deck_state.calc_red_pages[8] = format_image(apply_red_hue(create_text_overlay('./images/black_square.png', ".", font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=6, font_size=28)))
+    deck_state.calc_pages[8] = format_image(create_text_overlay('./images/black_square.png', ".", font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=3, font_size=28))
+    deck_state.calc_red_pages[8] = format_image(apply_red_hue(create_text_overlay('./images/black_square.png', ".", font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=3, font_size=28)))
 
     # Create and format the calculator page for the delete logo
     deck_state.calc_pages[9] = format_image(prep_image('./images/delete_logo.png'))
@@ -58,7 +58,7 @@ def calculator_images_setup():
     deck_state.calc_red_pages[14] = format_image(apply_red_hue(prep_image('./images/enter_logo.png')))
 
     # Create and format the calculator page for the "Enter Weight:" text
-    deck_state.calc_pages[3] = format_image(create_text_overlay('./images/black_square.png', "Enter Weight:", font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=6))
+    deck_state.calc_pages[3] = format_image(create_text_overlay('./images/black_square.png', "Enter Weight:", font_path='IBMPlexMono-SemiBold.ttf', font_color='#ffffff', font_y_offset=3))
 
 def image_setup():
     '''
@@ -72,7 +72,7 @@ def image_setup():
     deck_state.prev_image = format_image(prep_image('./images/prev_icon.png'))
     deck_state.full_logo = format_image(prep_image('./images/full_logo.png'))
     black_square = format_image(prep_image('./images/black_square.png'))
-    deck_state.page_next = format_image(create_text_overlay('./images/page_icon.png', "Next", font_path='IBMPlexMono-SemiBold.ttf' ,font_color='#ffffff', font_y_offset=6))
+    deck_state.page_next = format_image(create_text_overlay('./images/page_icon.png', "Next", font_path='IBMPlexMono-SemiBold.ttf' ,font_color='#ffffff', font_y_offset=3))
 
 def apply_red_hue(image, intensity=0.5):
     """
@@ -117,7 +117,7 @@ def split_text(text, font, max_width, draw):
     lines.append(' '.join(current_line))
     return lines
 
-def create_text_overlay(image_path, text_to_overlay, font_path="./Copyduck.ttf", font_size=18, font_color='white', font_y_offset=0, subtext=None, subtext_font_size=12, subtext_font_color='white', apply_red_hue=False):
+def create_text_overlay(image_path, text_to_overlay, font_path="IBMPlexMono-SemiBold.ttf", font_size=18, font_color='white', font_y_offset=0, subtext=None, subtext_font_size=12, subtext_font_color='white', apply_red_hue=False):
     try:
         base_image = Image.open(image_path)  # Open the base image
     except FileNotFoundError:
