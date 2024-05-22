@@ -36,7 +36,7 @@ def first_page_setup(labelPrinters, boxSizes):
         elif j == 3:
             if len(boxSizes) > 3:
                 # Create a "Next" button image for key 3 if there are more box sizes
-                deck_state.pages[0][j] = format_image(create_text_overlay('./images/box.png', "Next", font_path='OpenSans-ExtraBold.ttf' ,font_color='#60acf7'))
+                deck_state.pages[0][j] = format_image(create_text_overlay('./images/box.png', "Next", font_path='OpenSans-ExtraBold.ttf' ,font_color='#ffffff'))
             else:
                 # Set key 3 to None if there are no more box sizes
                 deck_state.pages[0][j] = None
@@ -50,7 +50,7 @@ def first_page_setup(labelPrinters, boxSizes):
         elif j == 8:
             if len(labelPrinters) > 3:
                 # Create a "Next" button image for key 8 if there are more label printers
-                deck_state.pages[0][j] = format_image(create_text_overlay('./images/label_icon.png', "Next", font_path='OpenSans-ExtraBold.ttf' ,font_color='#60acf7', font_y_offset=6))
+                deck_state.pages[0][j] = format_image(create_text_overlay('./images/label_icon.png', "Next", font_path='OpenSans-ExtraBold.ttf' ,font_color='#ffffff', font_y_offset=6))
             else:
                 # Set key 8 to None if there are no more label printers
                 deck_state.pages[0][j] = None
@@ -90,8 +90,8 @@ def setup_doc_pages(docPrinters, addDocs):
 
         # Generate images and text for each printer
         for j in range(len(docPrinters)):
-            this_doc.append(format_image(create_text_overlay('./images/page_icon.png', addDocs[i], font_size=16, font_path='OpenSans-ExtraBold.ttf', font_color='#60acf7', font_y_offset=6, subtext=docPrinters[j], subtext_font_size=13)))
-            this_red_doc.append(format_image(apply_red_hue(create_text_overlay('./images/page_icon.png', addDocs[i], font_size=16, font_path='OpenSans-ExtraBold.ttf', font_color='#60acf7', font_y_offset=6, subtext=docPrinters[j], subtext_font_size=13))))
+            this_doc.append(format_image(create_text_overlay('./images/page_icon.png', addDocs[i], font_size=16, font_path='OpenSans-ExtraBold.ttf', font_color='#ffffff', font_y_offset=6, subtext=docPrinters[j], subtext_font_size=13)))
+            this_red_doc.append(format_image(apply_red_hue(create_text_overlay('./images/page_icon.png', addDocs[i], font_size=16, font_path='OpenSans-ExtraBold.ttf', font_color='#ffffff', font_y_offset=6, subtext=docPrinters[j], subtext_font_size=13))))
             this_text.append([addDocs[i], docPrinters[j]])
 
         # Append generated images and text to respective lists
@@ -227,8 +227,8 @@ def box_row_setup(boxSizes):
         for j in range(3):
             if (i * 3) + j < len(boxSizes):
                 text = boxSizes[(i*3) + j]  # Get the text for the current box
-                deck_state.box_row[i][j] = format_image(create_text_overlay('./images/box.png', text_to_overlay=text, font_size=16, font_path='./OpenSans-ExtraBold.ttf' ,font_color='#60acf7', font_y_offset=-3))  # Create and format the image for the box
-                deck_state.red_box_row[i][j] = format_image(apply_red_hue(create_text_overlay('./images/box.png', text_to_overlay=text, font_size=16, font_path='./OpenSans-ExtraBold.ttf' ,font_color='#60acf7', font_y_offset=-3)))  # Create and format the red image for the box
+                deck_state.box_row[i][j] = format_image(create_text_overlay('./images/box.png', text_to_overlay=text, font_size=16, font_path='./OpenSans-ExtraBold.ttf' ,font_color='#ffffff', font_y_offset=-3))  # Create and format the image for the box
+                deck_state.red_box_row[i][j] = format_image(apply_red_hue(create_text_overlay('./images/box.png', text_to_overlay=text, font_size=16, font_path='./OpenSans-ExtraBold.ttf' ,font_color='#ffffff', font_y_offset=-3)))  # Create and format the red image for the box
                 deck_state._instance.box_row_text[i][j] = text  # Store the text for the box
 
             else:
@@ -254,8 +254,8 @@ def shipping_row_setup(labelPrinters):
                 text = labelPrinters[(i*3) + j]
 
                 # Generate shipping label images with text overlay
-                deck_state.shipping_row[i][j] = format_image(create_text_overlay('./images/label_icon.png', text_to_overlay="Shipping", font_size=16, font_path='OpenSans-ExtraBold.ttf' ,font_color='#60acf7', font_y_offset=6, subtext=text, subtext_font_size=13))
-                deck_state.red_shipping_row[i][j] = format_image(apply_red_hue(create_text_overlay('./images/label_icon.png', text_to_overlay="Shipping", font_size=16, font_path='OpenSans-ExtraBold.ttf' ,font_color='#60acf7', font_y_offset=6, subtext=text, subtext_font_size=13)))
+                deck_state.shipping_row[i][j] = format_image(create_text_overlay('./images/label_icon.png', text_to_overlay="Shipping", font_size=16, font_path='OpenSans-ExtraBold.ttf' ,font_color='#ffffff', font_y_offset=6, subtext=text, subtext_font_size=13))
+                deck_state.red_shipping_row[i][j] = format_image(apply_red_hue(create_text_overlay('./images/label_icon.png', text_to_overlay="Shipping", font_size=16, font_path='OpenSans-ExtraBold.ttf' ,font_color='#ffffff', font_y_offset=6, subtext=text, subtext_font_size=13)))
                 deck_state.shipping_row_text[i][j] = text
             else:
                 # Set remaining shipping label images to None
