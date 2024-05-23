@@ -227,8 +227,8 @@ def box_row_setup(boxSizes):
         for j in range(3):
             if (i * 3) + j < len(boxSizes):
                 text = boxSizes[(i*3) + j]  # Get the text for the current box
-                deck_state.box_row[i][j] = format_image(create_text_overlay('./images/box.png', text_to_overlay=text, font_size=14, font_path='./IBMPlexMono-SemiBold.ttf' ,font_color='#ffffff', font_y_offset=-8))  # Create and format the image for the box
-                deck_state.red_box_row[i][j] = format_image(apply_red_hue(create_text_overlay('./images/box.png', text_to_overlay=text, font_size=14, font_path='./IBMPlexMono-SemiBold.ttf' ,font_color='#ffffff', font_y_offset=-8)))  # Create and format the red image for the box
+                deck_state.box_row[i][j] = format_image(create_text_overlay('./images/box.png', text_to_overlay=text, font_size=14, font_path='./IBMPlexMono-SemiBold.ttf' ,font_color='#ffffff', font_y_offset=-12))  # Create and format the image for the box
+                deck_state.red_box_row[i][j] = format_image(apply_red_hue(create_text_overlay('./images/box.png', text_to_overlay=text, font_size=14, font_path='./IBMPlexMono-SemiBold.ttf' ,font_color='#ffffff', font_y_offset=-12)))  # Create and format the red image for the box
                 deck_state._instance.box_row_text[i][j] = text  # Store the text for the box
 
             else:
